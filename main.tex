@@ -28,6 +28,7 @@
 \usepackage[backend=biber, natbib=true, style=numeric]{biblatex}
 \addbibresource{sample-handout.bib}
 \usepackage{xargs}
+\usepackage{subfiles}
 \renewcommandx{\cite}[3][1={0pt},2={}]{\sidenote[][#1]{\fullcite[#2]{#3}}}
 
 %%
@@ -293,15 +294,20 @@ and \mbox{Donald E.~Knuth}.
 \vfill
 \vfill
 
-
+%------------------------------------------------------------------------
+%Se llaman losarchivos que contienen los capítulos del libro.
+\part{FIRST PART}
 % r.9 introduction
-\cleardoublepage
-\chapter*{Introduction}
+\subfile{Capitulos/introduccion.tex}
+%Agrega una página en blanco después del capítulo
+\newpage
 
-This sample book discusses the design of Edward Tufte's
-books\cite{Tufte2001,Tufte1990,Tufte1997,Tufte2006}
-and the use of the \doccls{tufte-book} and \doccls{tufte-handout} document classes.
+%Capitulo 1
+\subfile{Capitulos/introduccion.tex}
+%Agrega una página en blanco después del capítulo
+\newpage
 
+%------------------------------------------------------------------------
 
 %%
 % Start the main matter (normal chapters)
@@ -419,13 +425,13 @@ Publisher & & & & \\
 \end{center}
 
 \begin{figure*}[p]
-\fbox{\includegraphics[width=0.45\linewidth]{vdqi-title.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/vdqi-title.pdf}}
 \hfill
-\fbox{\includegraphics[width=0.45\linewidth]{ei-title.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/ei-title.pdf}}
 \\\vspace{\baselineskip}
-\fbox{\includegraphics[width=0.45\linewidth]{ve-title.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/ve-title.pdf}}
 \hfill
-\fbox{\includegraphics[width=0.45\linewidth]{be-title.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/be-title.pdf}}
 \end{figure*}
 
 \newthought{The tables of contents} in Tufte's books give us our first
@@ -434,13 +440,13 @@ parts, each containing some number of chapters.  His other three books only
 contain chapters---they're not broken into parts.
 
 \begin{figure*}[p]\index{table of contents}
-\fbox{\includegraphics[width=0.45\linewidth]{vdqi-contents.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/vdqi-contents.pdf}}
 \hfill
-\fbox{\includegraphics[width=0.45\linewidth]{ei-contents.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/ei-contents.pdf}}
 \\\vspace{\baselineskip}
-\fbox{\includegraphics[width=0.45\linewidth]{ve-contents.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/ve-contents.pdf}}
 \hfill
-\fbox{\includegraphics[width=0.45\linewidth]{be-contents.pdf}}
+\fbox{\includegraphics[width=0.45\linewidth]{Imagenes/be-contents.pdf}}
 \end{figure*}
 
 
@@ -649,7 +655,7 @@ use the \docenvdef{marginfigure} or \docenvdef{margintable} environments as foll
 (see figure~\ref{fig:marginfig}):
 
 \begin{marginfigure}%
-  \includegraphics[width=\linewidth]{helix}
+  \includegraphics[width=\linewidth]{Imagenes/helix}
   \caption{This is a margin figure.  The helix is defined by 
     $x = \cos(2\pi z)$, $y = \sin(2\pi z)$, and $z = [0, 2.7]$.  The figure was
     drawn using Asymptote (\protect\url{http://asymptote.sf.net/}).}
@@ -680,14 +686,14 @@ environment and figure~\ref{fig:textfig} is an example of the normal
 \docenv{figure} environment.
 
 \begin{figure*}[h]
-  \includegraphics[width=\linewidth]{sine.pdf}%
+  \includegraphics[width=\linewidth]{Imagenes/sine.pdf}%
   \caption{This graph shows $y = \sin x$ from about $x = [-10, 10]$.
   \emph{Notice that this figure takes up the full page width.}}%
   \label{fig:fullfig}%
 \end{figure*}
 
 \begin{figure}
-  \includegraphics{hilbertcurves.pdf}
+  \includegraphics{Imagenes/hilbertcurves.pdf}
 %  \checkparity This is an \pageparity\ page.%
   \caption[Hilbert curves of various degrees $n$.][6pt]{Hilbert curves of various degrees $n$. \emph{Notice that this figure only takes up the main textblock width.}}
   \label{fig:textfig}
